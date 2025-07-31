@@ -1,0 +1,23 @@
+#include <stdio.h>
+int main() {
+    int n;
+    printf("Enter the size of the square binary matrix (n x n): ");
+    scanf("%d", &n);
+    int matrix[n][n];
+    int zeroCount = 0;
+    printf("Enter the elements (0 or 1 only):\n");
+    for(int i = 0; i < n; i++) {
+        for(int j = 0; j < n; j++) {
+            scanf("%d", &matrix[i][j]);
+            if(matrix[i][j] == 0)
+                zeroCount++;
+        }
+    }
+    int totalElements = n * n;
+    printf("Number of zeros = %d\n", zeroCount);
+    if(zeroCount > totalElements / 2)
+        printf("It is a sparse matrix.\n");
+    else
+        printf("It is not a sparse matrix.\n");
+    return 0;
+}
