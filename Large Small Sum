@@ -1,0 +1,28 @@
+def LargeSmallSum(arr):
+    if not arr or len(arr) <= 3:
+        return 0
+    even_idx_elements = []
+    odd_idx_elements = []
+    for i in range(len(arr)):
+        if i % 2 == 0:  
+            even_idx_elements.append(arr[i])
+        else:  
+            odd_idx_elements.append(arr[i])
+    def second_largest(lst):
+        first = second = float('-inf')
+        for num in lst:
+            if num > first:
+                second = first
+                first = num
+            elif first > num > second:
+                second = num
+        return second
+    sl_even = second_largest(even_idx_elements)
+    sl_odd = second_largest(odd_idx_elements)
+    return sl_even + sl_odd
+n = int(input("Enter number of elements: "))
+arr = []
+print(f"Enter {n} elements:")
+for _ in range(n):
+    arr.append(int(input()))
+print("Result:", LargeSmallSum(arr))
