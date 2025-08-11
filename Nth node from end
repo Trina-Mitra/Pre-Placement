@@ -1,0 +1,59 @@
+#include <stdio.h>
+#include <stdlib.h>
+struct Node {
+    int data;
+    struct Node* next;
+};
+struct Node* createNode(int data) {
+    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+    newNode->data = data;
+    newNode->next = NULL;
+    return newNode;
+}
+void nthFromEnd(struct Node* head, int n) {
+    struct Node* first = head;
+    struct Node* second = head;
+    for (int i = 0; i < n; i++) {
+        if (first == NULL) {
+            printf("The list has fewer than %d nodes.\n", n);
+            return;
+        }
+        first = first->next;
+    }
+    while (first != NULL) {
+        first = first->next;
+        second = second->next;
+    }
+    printf("The %d-th node from the end is: %d\n", n, second->data);
+}
+void printList(struct Node* head) {
+    struct Node* temp = head;
+    while (temp != NULL) {
+        printf("%d ", temp->data);
+        temp = temp->next;
+    }
+    printf("\n");
+}
+int main() {
+    struct Node* head = NULL;
+    struct Node* temp = NULL;
+    int n, value, pos;
+    printf("Enter number of nodes: ");
+    scanf("%d", &n);
+    printf("Enter %d values:\n", n);
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &value);
+        struct Node* newNode = createNode(value);
+        if (head == NULL) {
+            head = newNode;
+            temp = head;
+        } else {
+            temp->next = newNode;
+            temp = temp->next;
+        }
+    }
+    printf("\nEnter the position from end: ");
+    scanf("%d", &pos);
+    nthFromEnd(head, pos);
+    return 0;
+}
