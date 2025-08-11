@@ -1,0 +1,21 @@
+def ProductSmallestFare(limit_sum, arr):
+    n = len(arr)
+    if n < 2:
+        return -1
+    valid_pairs = []
+    for j in range(1, n):
+        for k in range(0, j):
+            if arr[j] + arr[k] <= limit_sum:
+                valid_pairs.append((arr[j], arr[k]))
+    if not valid_pairs:
+        return 0
+    valid_pairs.sort(key=lambda x: (min(x), max(x)))
+    smallest_pair = valid_pairs[0]
+    return smallest_pair[0] * smallest_pair[1]
+limit_sum = int(input("Enter sum limit: "))
+n = int(input("Enter number of elements: "))
+arr = []
+print(f"Enter {n} elements:")
+for _ in range(n):
+    arr.append(int(input()))
+print("Result:", ProductSmallestFare(limit_sum, arr))
