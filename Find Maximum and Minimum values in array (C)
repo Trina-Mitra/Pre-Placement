@@ -1,0 +1,31 @@
+#include<stdio.h>
+void Max(int a[],int n){
+	int max=0;
+	for(int i=0;i<n;i++){
+		if(a[i]>a[max]){
+			max=i;
+		}
+	}
+	printf("Maximum element: %d\n", a[max]);
+}
+void Min(int a[],int n){
+	int min=0;
+	for(int i=0;i<n;i++){
+		if(a[i]<a[min]){
+			min=i;
+		}
+	}
+	printf("Minimum element: %d", a[min]);
+}
+main(){
+	int n;
+	printf("Enter length of array:");
+	scanf("%d",&n);
+	int arr[n];
+	for(int i=0;i<n;i++){
+		printf("Enter %d element:",i+1);
+		scanf("%d",&arr[i]);
+	}
+	Max(arr,n);
+	Min(arr,n);
+}
