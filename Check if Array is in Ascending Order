@@ -1,0 +1,25 @@
+#include<stdio.h>
+int checkAscending(int arr[],int n){
+	for(int i=0;i<n-1;i++){
+		if(arr[i]>arr[i+1]){
+			return false;
+		}
+	}
+	return true;
+}
+main(){
+	int n;
+	printf("Enter length of array:");
+	scanf("%d",&n);
+	int arr[n];
+	for(int i=0;i<n;i++){
+		printf("Enter %d element:",i+1);
+		scanf("%d",&arr[i]);
+	}
+	if(checkAscending(arr,n)){
+		printf("Array in ascending order");
+	}
+	else{
+		printf("Array not in ascending order");
+	}
+}
